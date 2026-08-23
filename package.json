@@ -1,0 +1,11 @@
+{
+  "name": "huella-evidence-to-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Week 2 Evidence-to-Action prototype for informal Mexican merchants",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/logic.test.js",
+    "start": "python3 -m http.server 4173"
+  }
+}

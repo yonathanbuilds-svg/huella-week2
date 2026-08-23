@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Huella convierte evidencia informal controlada por el usuario en una acción institucional definida." />
+    <meta name="theme-color" content="#082d4f" />
+    <title>Huella · Evidencia que abre una acción</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#app-main">Saltar al contenido</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Huella, inicio">
+        <span class="brand-mark" aria-hidden="true">H</span><span>Huella</span>
+      </a>
+      <span class="demo-pill">Demo académica · datos ficticios</span>
+    </header>
+    <div class="progress-wrap" aria-label="Progreso">
+      <div class="progress-track"><span id="progress-bar" class="progress-bar"></span></div>
+      <p id="progress-label" class="progress-label">Introducción</p>
+    </div>
+    <main id="app-main" class="app-shell" tabindex="-1">
+      <section class="screen is-active" data-screen="welcome" aria-labelledby="welcome-title">
+        <div class="eyebrow">Evidencia → acción</div>
+        <h1 id="welcome-title">Tu negocio existe aunque todavía no aparezca completo en un banco.</h1>
+        <p class="lede">Huella organiza comprobantes de compras recurrentes para que una institución revise tu solicitud de financiamiento de inventario.</p>
+        <div class="promise-grid" aria-label="Qué hace y qué no hace Huella">
+          <article class="mini-card">
+            <span class="mini-icon positive" aria-hidden="true">✓</span>
+            <h2>Muestra actividad</h2>
+            <p>Conecta cada dato con su comprobante y te deja corregirlo.</p>
+          </article>
+          <article class="mini-card">
+            <span class="mini-icon neutral" aria-hidden="true">—</span>
+            <h2>No te califica</h2>
+            <p>No genera score, probabilidad, aprobación ni rechazo automático.</p>
+          </article>
+        </div>
+        <div class="callout info-callout">
+          <strong>Prototipo con información inventada.</strong>
+          <p>Los comprobantes, instituciones y resultados de esta demostración no pertenecen a personas o empresas reales.</p>
+        </div>
+        <button id="start-button" class="button button-primary button-wide" type="button">Ver el compromiso primero</button>
+        <p class="microcopy centered">No pediremos contactos, ubicación ni conversaciones.</p>
+      </section>
+
+      <section class="screen" data-screen="commitment" aria-labelledby="commitment-title" hidden>
+        <button class="back-button" data-back="welcome" type="button">← Volver</button>
+        <div class="eyebrow">Antes de compartir</div>
+        <h1 id="commitment-title">Primero, la institución se compromete.</h1>
+        <article class="commitment-card">
+          <div class="institution-row">
+            <span class="institution-logo" aria-hidden="true">IJ</span>
+            <div><strong>Inventario Justo</strong><span>Institución simulada</span></div>
+          </div>
+          <p class="commitment-quote">“Si tu registro demuestra compras recurrentes de inventario, tu solicitud avanzará más allá del rechazo automático a una revisión humana de financiamiento.”</p>
+          <div class="authority-chip">El revisor puede corregir evidencia y cambiar el siguiente paso</div>
+        </article>
+        <div class="boundary-grid">
+          <article class="boundary-card allowed">
+            <h2>Lo que sí revisaremos</h2>
+            <ul class="check-list">
+              <li>Proveedor mostrado en cada fuente</li>
+              <li>Fechas de compras recurrentes</li>
+              <li>Totales que tú confirmes</li>
+            </ul>
+          </article>
+          <article class="boundary-card blocked">
+            <h2>Lo que nunca pediremos</h2>
+            <ul class="x-list">
+              <li>Contactos o relaciones familiares</li>
+              <li>Conversaciones o clientes</li>
+              <li>Ubicación precisa o colonia</li>
+            </ul>
+          </article>
+        </div>
+        <label class="consent-box" for="commitment-ack">
+          <input id="commitment-ack" type="checkbox" />
+          <span>Entiendo qué acción desbloquea la evidencia y qué datos quedan fuera.</span>
+        </label>
+        <p id="commitment-error" class="form-error" role="alert" hidden>Confirma que entendiste el compromiso para continuar.</p>
+        <button id="commitment-continue" class="button button-primary button-wide" type="button" disabled>Elegir comprobantes</button>
+        <button id="decline-button" class="button button-ghost button-wide" type="button">No continuar</button>
+        <p class="microcopy centered">Salir no crea una marca negativa ni comparte información.</p>
+      </section>
+
+      <section class="screen" data-screen="evidence" aria-labelledby="evidence-title" hidden>
+        <button class="back-button" data-back="commitment" type="button">← Volver</button>
+        <div class="eyebrow">Fuentes bajo tu control</div>
+        <h1 id="evidence-title">Elige los tres comprobantes de esta demostración.</h1>
+        <p class="lede">Están completamente inventados. La IA simulada extraerá únicamente proveedor, fecha y total; todavía no verificará autenticidad.</p>
+
+        <div class="ai-boundary">
+          <span class="ai-badge">IA simulada</span>
+          <p><strong>Extracción ≠ verificación.</strong> Primero se leen campos; después tú los revisas y el registro declara su incertidumbre.</p>
+        </div>
+
+        <div id="receipt-list" class="receipt-list">
+          <label class="receipt-card" for="receipt-001">
+            <input id="receipt-001" class="receipt-checkbox" type="checkbox" value="receipt-001" />
+            <img src="assets/demo-receipt-01.png" alt="Comprobante ficticio DEMO-001, fechado el 14 de mayo de 2026" />
+            <span class="receipt-copy"><strong>DEMO-001</strong><small>14 mayo 2026 · $2,220 MXN</small><em>Seleccionar fuente</em></span>
+          </label>
+          <label class="receipt-card" for="receipt-002">
+            <input id="receipt-002" class="receipt-checkbox" type="checkbox" value="receipt-002" />
+            <img src="assets/demo-receipt-02.png" alt="Comprobante ficticio DEMO-002, fechado el 7 de junio de 2026" />
+            <span class="receipt-copy"><strong>DEMO-002</strong><small>7 junio 2026 · $1,420 MXN</small><em>Seleccionar fuente</em></span>
+          </label>
+          <label class="receipt-card" for="receipt-003">
+            <input id="receipt-003" class="receipt-checkbox" type="checkbox" value="receipt-003" />
+            <img src="assets/demo-receipt-03.png" alt="Comprobante ficticio DEMO-003, fechado el 9 de julio de 2026" />
+            <span class="receipt-copy"><strong>DEMO-003</strong><small>9 julio 2026 · $2,600 MXN</small><em>Seleccionar fuente</em></span>
+          </label>
+        </div>
+
+        <div class="selection-status"><strong id="selection-count">0 de 3</strong><span>fuentes seleccionadas</span></div>
+        <p id="selection-error" class="form-error" role="alert" hidden></p>
+        <button id="extract-button" class="button button-primary button-wide" type="button" disabled>Extraer campos con IA simulada</button>
+
+        <div id="extraction-progress" class="extraction-progress" role="status" hidden>
+          <span class="spinner" aria-hidden="true"></span>
+          <div><strong>Leyendo tres fuentes ficticias…</strong><p>No se está enviando información a ningún servicio externo.</p></div>
+        </div>
+        <div id="extraction-ready" class="callout success-callout" hidden>
+          <strong>Campos estructurados listos.</strong>
+          <p>La extracción simulada produjo tres objetos JSON vinculados a sus imágenes.</p>
+          <button id="review-button" class="button button-secondary button-wide" type="button" disabled>Revisar y corregir campos</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="review" aria-labelledby="review-title" hidden>
+        <button class="back-button" data-back="evidence" type="button">← Volver</button>
+        <div class="eyebrow">Tú corriges antes de verificar</div>
+        <h1 id="review-title">Compara cada campo con su fuente.</h1>
+        <p class="lede">La IA simulada puede equivocarse. Nada se convierte en evidencia hasta que tú lo revises y confirmes.</p>
+        <div class="ai-boundary">
+          <span class="ai-badge">IA simulada</span>
+          <p>Estos campos fueron extraídos automáticamente. Confirmarlos significa que coinciden con la imagen; no confirma que el documento sea auténtico.</p>
+        </div>
+        <form id="review-form" novalidate>
+          <div id="review-sources" class="review-sources"></div>
+          <p id="review-error" class="form-error" role="alert" hidden></p>
+          <button id="generate-record" class="button button-primary button-wide" type="submit">Generar registro limitado</button>
+        </form>
+      </section>
+
+      <section class="screen" data-screen="record" aria-labelledby="record-title" hidden>
+        <button class="back-button" data-back="review" type="button">← Corregir campos</button>
+        <div class="eyebrow">Registro fuente por fuente</div>
+        <div class="record-heading">
+          <div class="status-symbol success-symbol" aria-hidden="true">✓</div>
+          <div>
+            <span class="demo-verify-pill">Registro limitado · fuentes revisadas</span>
+            <h1 id="record-title">Tres compras recurrentes respaldadas por sus fuentes</h1>
+          </div>
+        </div>
+        <p id="record-period" class="lede"></p>
+        <div class="callout approval-boundary">
+          <strong>Esto no es una aprobación de crédito.</strong>
+          <p>El único resultado es pasar a una revisión humana. La institución todavía puede pedir evidencia adicional y debe explicar cómo completarla.</p>
+        </div>
+        <div class="callout warning-callout">
+          <strong>Alcance exacto del registro</strong>
+          <p>El usuario confirmó que los campos coinciden con las imágenes mostradas. La autenticidad de los documentos, las ventas, la utilidad y la capacidad de pago no fueron verificadas.</p>
+        </div>
+
+        <section class="record-section" aria-labelledby="sources-title">
+          <h2 id="sources-title">Fuentes vinculadas</h2>
+          <div id="record-sources" class="record-sources"></div>
+        </section>
+
+        <section class="record-section" aria-labelledby="gaps-title">
+          <div class="section-title-row"><h2 id="gaps-title">Lo que falta y cómo repararlo</h2><span>Condición 3</span></div>
+          <p class="section-intro">Ninguna ausencia se convierte en señal negativa. Cada gap muestra una opción realista.</p>
+          <div id="record-gaps" class="gap-list"></div>
+        </section>
+
+        <section class="record-section next-step-section" aria-labelledby="next-step-title">
+          <span class="institution-logo" aria-hidden="true">IJ</span>
+          <div>
+            <h2 id="next-step-title">Siguiente paso comprometido</h2>
+            <p>Al compartir este registro, Inventario Justo lo avanzará a una revisión humana de financiamiento de inventario.</p>
+          </div>
+        </section>
+
+        <button id="continue-to-share" class="button button-primary button-wide" type="button">Revisar antes de compartir</button>
+        <button class="button button-ghost button-wide" data-back="review" type="button">Corregir un dato</button>
+      </section>
+
+      <section class="screen" data-screen="share" aria-labelledby="share-title" hidden>
+        <button class="back-button" data-back="record" type="button">← Volver al registro</button>
+        <div class="eyebrow">Consentimiento por destinatario</div>
+        <h1 id="share-title">Tú decides si este registro sale de Huella.</h1>
+        <p class="lede">Antes de confirmar, revisa exactamente quién lo recibe, qué recibe y qué debe hacer.</p>
+
+        <article class="recipient-card">
+          <div class="institution-row dark-text">
+            <span class="institution-logo" aria-hidden="true">IJ</span>
+            <div><strong>Inventario Justo</strong><span>Institución simulada · único destinatario</span></div>
+          </div>
+          <div class="recipient-commitment">
+            <span>Acción comprometida</span>
+            <p>Avanzar este registro más allá del rechazo automático a una revisión humana de financiamiento de inventario.</p>
+          </div>
+        </article>
+
+        <div class="share-columns">
+          <article class="share-list allowed-share">
+            <h2>Se comparte</h2>
+            <ul class="check-list">
+              <li>Tres fuentes vinculadas</li>
+              <li>Proveedor, fecha y total confirmados</li>
+              <li>Gaps y límites del registro</li>
+            </ul>
+          </article>
+          <article class="share-list blocked-share">
+            <h2>No existe ni se comparte</h2>
+            <ul class="x-list">
+              <li>Score o recomendación</li>
+              <li>Contactos, clientes o familia</li>
+              <li>Ubicación o colonia</li>
+            </ul>
+          </article>
+        </div>
+
+        <label class="consent-box" for="share-consent">
+          <input id="share-consent" type="checkbox" />
+          <span>Autorizo compartir este registro limitado únicamente con Inventario Justo para la acción descrita.</span>
+        </label>
+        <p id="share-error" class="form-error" role="alert" hidden></p>
+        <button id="share-button" class="button button-primary button-wide" type="button" disabled>Compartir y avanzar a revisión humana</button>
+        <button id="do-not-share" class="button button-ghost button-wide" type="button">No compartir</button>
+        <p class="microcopy centered">Negarte no genera penalización, score ni registro negativo.</p>
+      </section>
+
+      <section class="screen" data-screen="not-shared" aria-labelledby="not-shared-title" hidden>
+        <div class="status-symbol neutral-symbol" aria-hidden="true">✓</div>
+        <div class="eyebrow">Control conservado</div>
+        <h1 id="not-shared-title">El registro no fue compartido.</h1>
+        <p class="lede">No se creó una señal negativa. Puedes volver, corregir tus fuentes o cerrar la demostración.</p>
+        <button class="button button-secondary button-wide" data-back="share" type="button">Volver a revisar</button>
+        <button class="button button-ghost button-wide" data-back="welcome" type="button">Cerrar demo</button>
+      </section>
+
+      <section class="screen" data-screen="submitted" aria-labelledby="submitted-title" hidden>
+        <div class="status-symbol success-symbol" aria-hidden="true">✓</div>
+        <div class="eyebrow">Acción desbloqueada</div>
+        <h1 id="submitted-title">Tu registro avanzó a revisión humana.</h1>
+        <p class="lede">Inventario Justo recibió únicamente el registro limitado. No hubo aprobación, rechazo ni decisión automática.</p>
+
+        <ol class="review-timeline">
+          <li class="done"><strong>Registro recibido</strong><span>Fuentes, límites y gaps visibles</span></li>
+          <li class="active"><strong>Revisión humana simulada</strong><span>El revisor puede corregir evidencia y cambiar el siguiente paso</span></li>
+          <li><strong>Razón y reparación</strong><span>Cualquier resultado debe explicar qué fuente falta y cómo corregirla</span></li>
+        </ol>
+
+        <div class="callout success-callout">
+          <strong>Autoridad real de apelación</strong>
+          <p>Una solicitud de corrección llega a una persona autorizada para modificar el registro y el siguiente paso. No es una revisión automática del mismo resultado.</p>
+        </div>
+
+        <button id="open-appeal" class="button button-secondary button-wide" type="button">Solicitar una corrección humana</button>
+        <form id="appeal-form" class="appeal-form" hidden novalidate>
+          <div class="field">
+            <label for="appeal-reason">¿Qué necesitas corregir?</label>
+            <select id="appeal-reason" name="reason">
+              <option value="">Selecciona una opción</option>
+              <option value="incorrect_field">Un campo está incorrecto</option>
+              <option value="missing_source">Una fuente no aparece</option>
+              <option value="next_step">El siguiente paso no corresponde</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="appeal-detail">Describe la corrección</label>
+            <textarea id="appeal-detail" name="detail" maxlength="240" rows="4" placeholder="Ejemplo: La fecha de la fuente 2 debe ser…"></textarea>
+          </div>
+          <p id="appeal-error" class="form-error" role="alert" hidden></p>
+          <button class="button button-primary button-wide" type="submit">Enviar a una persona revisora</button>
+        </form>
+        <div id="appeal-success" class="callout info-callout" hidden>
+          <strong>Corrección enviada.</strong>
+          <p>Una persona con autoridad para corregir evidencia y cambiar el siguiente paso revisará esta solicitud simulada.</p>
+        </div>
+        <button class="button button-ghost button-wide" data-back="welcome" type="button">Terminar demostración</button>
+      </section>
+
+      <section class="screen" data-screen="safe-exit" aria-labelledby="exit-title" hidden>
+        <div class="status-symbol neutral-symbol" aria-hidden="true">✓</div>
+        <h1 id="exit-title">No compartiste información.</h1>
+        <p class="lede">Tu decisión no genera una penalización, un score ni un registro negativo.</p>
+        <button class="button button-secondary button-wide" data-back="commitment" type="button">Revisar el compromiso</button>
+        <button class="button button-ghost button-wide" data-back="welcome" type="button">Volver al inicio</button>
+      </section>
+    </main>
+    <footer class="site-footer"><p>Sin score · Sin decisión automática · Sin datos reales</p></footer>
+    <div id="status-region" class="sr-only" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
